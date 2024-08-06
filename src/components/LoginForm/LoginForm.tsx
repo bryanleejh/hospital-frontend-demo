@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useAuth } from "../../context/AuthContext"; // Import useAuth
+import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 
 interface LoginFormProps {
@@ -8,10 +10,18 @@ interface LoginFormProps {
 const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const auth = useAuth(); // Get auth context
+  const navigate = useNavigate(); // Hook for navigation
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onLogin(username, password);
+    if (username === "user" && password === "pass") {
+      // Simple check for demonstration
+      auth.login(); // Update the auth state to logged in
+      navigate("/appointments"); // Navigate to the appointment list
+    } else {
+      alert("Invalid credentials");
+    }
   };
 
   return (
