@@ -1,5 +1,8 @@
 /* General styling for the appointment list container */
 .appointment-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   max-width: 600px;
   margin: 20px auto;
   padding: 20px;
@@ -8,27 +11,65 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Styling for appointment list */
+.appointment-list {
+  padding: 0px;
+}
+
 /* Styling for individual appointment items */
 .appointment-item {
+  width: 100%;
   padding: 10px;
   margin: 10px 0;
   background-color: #ffffff;
   border: 1px solid #dee2e6;
   border-radius: 4px;
   list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* Header for the appointment list */
-.appointment-header {
-  font-size: 1.5rem;
-  color: #333;
-  text-align: center;
-  margin-bottom: 20px;
+/* Responsive styling for tablets */
+@media (max-width: 768px) {
+  .appointment-container {
+    max-width: 90%;
+    padding: 15px;
+  }
+
+  .appointment-item {
+    padding: 8px;
+    font-size: 0.95rem;
+    /* Slightly smaller font for better readability on tablets */
+  }
 }
 
-/* Subtle hover effect for interaction */
-.appointment-item:hover {
-  background-color: #e9ecef;
-  border-color: #ced4da;
-  cursor: pointer;
+/* Responsive styling for mobile devices */
+@media (max-width: 480px) {
+  .appointment-container {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .appointment-item {
+    padding: 5px;
+    font-size: 0.9rem;
+    /* Smaller font size for mobile devices */
+    flex-direction: column;
+    /* Stack elements vertically on smaller screens */
+    text-align: center;
+    /* Center text for better aesthetics on small screens */
+  }
+
+  .appointment-item>* {
+    width: 100%;
+    /* Make all child elements full width */
+    margin-bottom: 5px;
+    /* Add some bottom margin for spacing */
+  }
+
+  .appointment-item>*:last-child {
+    margin-bottom: 0;
+    /* Remove bottom margin for the last element */
+  }
 }

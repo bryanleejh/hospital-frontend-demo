@@ -10,7 +10,7 @@ const AppointmentList: React.FC = () => {
   return (
     <div className="appointment-container">
       <h2 className="appointment-header">Appointments</h2>
-      <ul>
+      <ul className="appointment-list">
         {appointments.map((appointment, index) => (
           <li key={index} className="appointment-item">
             {appointment}
