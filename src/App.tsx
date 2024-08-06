@@ -1,46 +1,17 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import logo from "./logo.svg";
-import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LoginForm from "./components/LoginForm/LoginForm";
+import AppointmentList from "./components/AppointmentList/AppointmentList";
 
-function Home() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <Link to="/about" className="App-link">
-          Go to About
-        </Link>
-      </header>
-    </div>
-  );
-}
-
-function About() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>This is the About page</p>
-        <Link to="/" className="App-link">
-          Go to Home
-        </Link>
-      </header>
-    </div>
-  );
-}
-
-function App() {
+const App: React.FC = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/" element={<LoginForm />} />
+        <Route path="/appointments" element={<AppointmentList />} />
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;
