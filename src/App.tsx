@@ -1,8 +1,9 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import logo from "./logo.svg";
+import "./App.css";
 
-function App() {
+function Home() {
   return (
     <div className="App">
       <header className="App-header">
@@ -10,16 +11,35 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Link to="/about" className="App-link">
+          Go to About
+        </Link>
       </header>
     </div>
+  );
+}
+
+function About() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <p>This is the About page</p>
+        <Link to="/" className="App-link">
+          Go to Home
+        </Link>
+      </header>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </Router>
   );
 }
 
