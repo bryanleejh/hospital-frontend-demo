@@ -15,7 +15,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (username === "user" && password === "pass") {
+    if (username === "user" && password === "p@ss") {
       // Simple check for demonstration
       auth.login(); // Update the auth state to logged in
       navigate("/appointments"); // Navigate to the appointment list

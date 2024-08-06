@@ -12,7 +12,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-
   const login = () => setIsAuthenticated(true);
   const logout = () => setIsAuthenticated(false);
 
