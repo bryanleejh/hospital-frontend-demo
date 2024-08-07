@@ -3,13 +3,17 @@ import "./AppointmentList.css"; // Adjust the path if necessary
 import { useAppointments } from "../../context/AppointmentContext";
 
 const AppointmentList: React.FC = () => {
-  const { appointments } = useAppointments();
+  const { appointments, deleteAppointment } = useAppointments();
 
   const navigate = useNavigate();
 
   // Function to handle button click to navigate to the appointment form
   const handleCreateAppointment = () => {
     navigate("/create-appointment"); // Adjust the path as needed
+  };
+
+  const handleDelete = (id: number) => {
+    deleteAppointment(id);
   };
 
   return (
@@ -25,6 +29,12 @@ const AppointmentList: React.FC = () => {
         {appointments.map((appointment, index) => (
           <li key={index} className="appointment-item">
             {`${appointment.patientName} with Dr. ${appointment.doctor} on ${appointment.dateTime}`}
+            <button
+              onClick={() => handleDelete(appointment.id)}
+              className="delete-button"
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>

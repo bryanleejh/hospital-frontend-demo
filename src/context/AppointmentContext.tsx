@@ -10,6 +10,7 @@ interface Appointment extends BaseAppointment {
 interface AppointmentContextType {
   appointments: Appointment[];
   addAppointment: (newAppointment: BaseAppointment) => void;
+  deleteAppointment: (id: number) => void;
 }
 
 const AppointmentContext = createContext<AppointmentContextType | undefined>(
@@ -26,8 +27,16 @@ export const AppointmentProvider: React.FC<{ children: ReactNode }> = ({
     setAppointments([...appointments, appointmentWithId]);
   };
 
+  const deleteAppointment = (id: number) => {
+    setAppointments((prevAppointments) =>
+      prevAppointments.filter((appointment) => appointment.id !== id)
+    );
+  };
+
   return (
-    <AppointmentContext.Provider value={{ appointments, addAppointment }}>
+    <AppointmentContext.Provider
+      value={{ appointments, addAppointment, deleteAppointment }}
+    >
       {children}
     </AppointmentContext.Provider>
   );
