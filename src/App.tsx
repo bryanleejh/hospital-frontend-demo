@@ -18,16 +18,28 @@ const App: React.FC = () => {
           <Route
             path="/appointments"
             element={
+              auth.isAuthenticated ? <AppointmentList /> : <Navigate to="/" />
+            }
+          />
+          <Route
+            path="/appointments/new"
+            element={
               auth.isAuthenticated ? (
-                <AppointmentList />
+                <CreateAppointmentForm />
               ) : (
                 <Navigate to="/" />
               )
             }
           />
           <Route
-            path="/create-appointment"
-            element={<CreateAppointmentForm />}
+            path="/appointment/edit/:appointmentId"
+            element={
+              auth.isAuthenticated ? (
+                <CreateAppointmentForm />
+              ) : (
+                <Navigate to="/" />
+              )
+            }
           />
         </Routes>
       </MainLayout>

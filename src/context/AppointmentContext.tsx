@@ -1,16 +1,21 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
-import { BaseAppointment } from "../components/AppointmentForm/AppointmentForm";
 
 let nextId = 0; // This counter will increment to create unique ids
 
-interface Appointment extends BaseAppointment {
-  id: number;
+export interface Appointment {
+  id: number | null;
+  patientName: string;
+  doctor: string;
+  dateTime: string;
+  purpose: string;
+  contactInfo: string;
 }
 
 interface AppointmentContextType {
   appointments: Appointment[];
-  addAppointment: (newAppointment: BaseAppointment) => void;
+  addAppointment: (newAppointment: Appointment) => void;
   deleteAppointment: (id: number) => void;
+  updateAppointment: (updatedAppointment: Appointment) => void;
 }
 
 const AppointmentContext = createContext<AppointmentContextType | undefined>(
@@ -22,7 +27,7 @@ export const AppointmentProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
 
-  const addAppointment = (newAppointment: BaseAppointment) => {
+  const addAppointment = (newAppointment: Appointment) => {
     const appointmentWithId = { ...newAppointment, id: nextId++ }; // Assign an id to each new appointment
     setAppointments([...appointments, appointmentWithId]);
   };
@@ -33,9 +38,24 @@ export const AppointmentProvider: React.FC<{ children: ReactNode }> = ({
     );
   };
 
+  const updateAppointment = (updatedAppointment: Appointment) => {
+    setAppointments((prevAppointments) =>
+      prevAppointments.map((appointment) =>
+        appointment.id === updatedAppointment.id
+          ? updatedAppointment
+          : appointment
+      )
+    );
+  };
+
   return (
     <AppointmentContext.Provider
-      value={{ appointments, addAppointment, deleteAppointment }}
+      value={{
+        appointments,
+        addAppointment,
+        deleteAppointment,
+        updateAppointment,
+      }}
     >
       {children}
     </AppointmentContext.Provider>

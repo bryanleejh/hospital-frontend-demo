@@ -1,20 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./AppointmentForm.css"; // Adjust the path if necessary
-import { useAppointments } from "../../context/AppointmentContext";
-import { useNavigate } from "react-router-dom";
-
-export interface BaseAppointment {
-  patientName: string;
-  doctor: string;
-  dateTime: string;
-  purpose: string;
-  contactInfo: string;
-}
+import { Appointment, useAppointments } from "../../context/AppointmentContext";
+import { useNavigate, useParams } from "react-router-dom";
 
 const CreateAppointmentForm: React.FC = () => {
-  const { addAppointment } = useAppointments();
+  const { appointmentId } = useParams<{ appointmentId: string }>();
+  const { appointments, addAppointment, updateAppointment } = useAppointments();
   const navigate = useNavigate();
-  const [formState, setFormState] = useState<BaseAppointment>({
+  const [formData, setFormData] = useState<Appointment>({
+    id: null,
     patientName: "",
     doctor: "",
     dateTime: "",
@@ -22,22 +16,36 @@ const CreateAppointmentForm: React.FC = () => {
     contactInfo: "",
   });
 
+  // Initialize form data when editing an existing appointment
+  useEffect(() => {
+    if (appointmentId) {
+      const appointmentToEdit = appointments.find(
+        (a) => a.id === parseInt(appointmentId)
+      );
+      if (appointmentToEdit) {
+        setFormData(appointmentToEdit);
+      }
+    }
+  }, [appointmentId, appointments]);
+
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >
   ) => {
-    setFormState({
-      ...formState,
+    setFormData({
+      ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Add logic to validate and process the form submission
-    addAppointment(formState);
-    console.log("Form Submitted:", formState);
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (formData.id !== null) {
+      updateAppointment(formData);
+    } else {
+      addAppointment({ ...formData, id: Date.now() }); // Assuming you're generating IDs on the fly
+    }
     navigate("/appointments");
   };
 
@@ -52,7 +60,7 @@ const CreateAppointmentForm: React.FC = () => {
         <input
           type="text"
           name="patientName"
-          value={formState.patientName}
+          value={formData.patientName}
           onChange={handleChange}
         />
       </label>
@@ -61,7 +69,7 @@ const CreateAppointmentForm: React.FC = () => {
         <input
           type="text"
           name="doctor"
-          value={formState.doctor}
+          value={formData.doctor}
           onChange={handleChange}
         />
       </label>
@@ -70,7 +78,7 @@ const CreateAppointmentForm: React.FC = () => {
         <input
           type="datetime-local"
           name="dateTime"
-          value={formState.dateTime}
+          value={formData.dateTime}
           onChange={handleChange}
         />
       </label>
@@ -78,7 +86,7 @@ const CreateAppointmentForm: React.FC = () => {
         Purpose of Visit:
         <textarea
           name="purpose"
-          value={formState.purpose}
+          value={formData.purpose}
           onChange={handleChange}
         ></textarea>
       </label>
@@ -87,7 +95,7 @@ const CreateAppointmentForm: React.FC = () => {
         <input
           type="text"
           name="contactInfo"
-          value={formState.contactInfo}
+          value={formData.contactInfo}
           onChange={handleChange}
         />
       </label>
