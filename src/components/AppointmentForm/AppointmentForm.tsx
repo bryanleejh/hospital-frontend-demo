@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./AppointmentForm.css"; // Adjust the path if necessary
+import { useAppointments } from "../../context/AppointmentContext";
+import { useNavigate } from "react-router-dom";
 
-interface AppointmentFormState {
+export interface BaseAppointment {
   patientName: string;
   doctor: string;
   dateTime: string;
@@ -10,7 +12,9 @@ interface AppointmentFormState {
 }
 
 const CreateAppointmentForm: React.FC = () => {
-  const [formState, setFormState] = useState<AppointmentFormState>({
+  const { addAppointment } = useAppointments();
+  const navigate = useNavigate();
+  const [formState, setFormState] = useState<BaseAppointment>({
     patientName: "",
     doctor: "",
     dateTime: "",
@@ -31,8 +35,10 @@ const CreateAppointmentForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Submitting Form:", formState);
     // Add logic to validate and process the form submission
+    addAppointment(formState);
+    console.log("Form Submitted:", formState);
+    navigate("/appointments");
   };
 
   return (

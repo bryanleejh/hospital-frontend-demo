@@ -1,12 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import "./AppointmentList.css"; // Adjust the path if necessary
+import { useAppointments } from "../../context/AppointmentContext";
 
 const AppointmentList: React.FC = () => {
-  const appointments = [
-    "Check-up at 10:00",
-    "Dental at 14:00",
-    "Surgery at 16:00",
-  ];
+  const { appointments } = useAppointments();
 
   const navigate = useNavigate();
 
@@ -27,7 +24,7 @@ const AppointmentList: React.FC = () => {
       <ul className="appointment-list">
         {appointments.map((appointment, index) => (
           <li key={index} className="appointment-item">
-            {appointment}
+            {`${appointment.patientName} with Dr. ${appointment.doctor} on ${appointment.dateTime}`}
           </li>
         ))}
       </ul>
