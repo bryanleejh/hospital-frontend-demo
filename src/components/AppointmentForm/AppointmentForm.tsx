@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./AppointmentForm.css"; // Adjust the path if necessary
 
 interface AppointmentFormState {
   patientName: string;
