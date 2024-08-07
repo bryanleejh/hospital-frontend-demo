@@ -13,7 +13,9 @@ const AppointmentList: React.FC = () => {
   };
 
   const handleDelete = (id: number) => {
-    deleteAppointment(id);
+    if (window.confirm("Are you sure you want to delete this appointment?")) {
+      deleteAppointment(id);
+    }
   };
 
   return (
