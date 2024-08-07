@@ -3,11 +3,7 @@ import { useAuth } from "../../context/AuthContext"; // Import useAuth
 import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 
-interface LoginFormProps {
-  onLogin: (username: string, password: string) => void;
-}
-
-const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
+const LoginForm: React.FC = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const auth = useAuth(); // Get auth context
