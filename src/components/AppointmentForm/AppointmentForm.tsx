@@ -41,6 +41,10 @@ const CreateAppointmentForm: React.FC = () => {
     navigate("/appointments");
   };
 
+  const handleBack = () => {
+    navigate("/appointments"); // Navigate back to the appointment list without saving
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <label>
@@ -88,6 +92,9 @@ const CreateAppointmentForm: React.FC = () => {
         />
       </label>
       <button type="submit">Schedule Appointment</button>
+      <button type="button" onClick={handleBack} className="back-button">
+        Back to List
+      </button>
     </form>
   );
 };
