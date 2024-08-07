@@ -39,7 +39,7 @@ const AppointmentList: React.FC = () => {
         onClick={handleCreateAppointment}
         className="create-appointment-button"
       >
-        Create New Appointment
+        Create Appointment
       </button>
       <ul className="appointment-list">
         {appointments.map((appointment) => (
