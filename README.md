@@ -48,7 +48,8 @@ Instructions on how to contribute to the project.
 
 - More advanced visualisations
 - Accessibility related features
-- API Integration
+- API integration
+- Form validation
 
 ## Authors
 
