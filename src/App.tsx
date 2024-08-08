@@ -1,11 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navigate } from "react-router-dom";
+import { useAuth } from "./context/AuthContext";
 import LoginForm from "./components/LoginForm/LoginForm";
 import AppointmentList from "./components/AppointmentList/AppointmentList";
 import CreateAppointmentForm from "./components/AppointmentForm/AppointmentForm";
 import MainLayout from "./components/MainLayout/MainLayout";
-import { useAuth } from "./context/AuthContext";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 const App: React.FC = () => {
   const auth = useAuth();
@@ -41,6 +42,7 @@ const App: React.FC = () => {
               )
             }
           />
+          <Route path="/chart" element={<Dashboard />} />
         </Routes>
       </MainLayout>
     </Router>

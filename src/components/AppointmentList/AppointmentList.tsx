@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import "./AppointmentList.css"; // Adjust the path if necessary
 import { useAppointments } from "../../context/AppointmentContext";
+import mockAppointments from "./MockAppointments";
 
 const AppointmentList: React.FC = () => {
-  const { appointments, deleteAppointment } =
+  const { appointments, deleteAppointment, setAppointments } =
     useAppointments();
   const navigate = useNavigate();
 
@@ -28,19 +29,28 @@ const AppointmentList: React.FC = () => {
       console.error("Attempted to edit an appointment without a valid id.");
       return; // Optionally handle this case more gracefully or notify the user
     }
-
     navigate(`/appointment/edit/${id}`);
+  };
+
+  const goToChart = () => {
+    navigate("/chart"); // Navigate to the chart page
+  };
+
+  const loadMockData = () => {
+    setAppointments(mockAppointments);
   };
 
   return (
     <div className="appointment-container">
       <h2 className="appointment-header">Appointments</h2>
+      <button onClick={goToChart}>View Appointment Chart</button>
       <button
         onClick={handleCreateAppointment}
         className="create-appointment-button"
       >
         Create Appointment
       </button>
+      <button onClick={loadMockData}>Load Mock Data</button>
       <ul className="appointment-list">
         {appointments.map((appointment) => (
           <li key={appointment.id} className="appointment-item">

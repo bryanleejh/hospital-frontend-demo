@@ -16,6 +16,7 @@ interface AppointmentContextType {
   addAppointment: (newAppointment: Appointment) => void;
   deleteAppointment: (id: number) => void;
   updateAppointment: (updatedAppointment: Appointment) => void;
+  setAppointments: (appointments: Appointment[]) => void;
 }
 
 const AppointmentContext = createContext<AppointmentContextType | undefined>(
@@ -28,7 +29,7 @@ export const AppointmentProvider: React.FC<{ children: ReactNode }> = ({
   const [appointments, setAppointments] = useState<Appointment[]>([]);
 
   const addAppointment = (newAppointment: Appointment) => {
-    const appointmentWithId = { ...newAppointment, id: nextId++ }; // Assign an id to each new appointment
+    const appointmentWithId = { ...newAppointment, id: nextId++ };
     setAppointments([...appointments, appointmentWithId]);
   };
 
@@ -55,6 +56,7 @@ export const AppointmentProvider: React.FC<{ children: ReactNode }> = ({
         addAppointment,
         deleteAppointment,
         updateAppointment,
+        setAppointments
       }}
     >
       {children}
