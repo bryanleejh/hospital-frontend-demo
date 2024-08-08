@@ -53,10 +53,9 @@ Instructions on how to contribute to the project.
 
 ## Future features
 
-- More advanced visualisations
+- More visualisations
 - Accessibility related features
 - API integration
-- Form validation
 - Improve security
 
 ## Authors
@@ -79,3 +78,4 @@ No license
 Inspiration, code snippets, etc.
 * [Recharts](http://recharts.org/en-US/)
 * [React Router](https://reactrouter.com/)
+* [React Hook Forms](https://react-hook-form.com/)
