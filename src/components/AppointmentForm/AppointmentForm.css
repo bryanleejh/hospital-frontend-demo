@@ -48,3 +48,16 @@ button:hover {
 .back-button:hover {
   background-color: #bbb;
 }
+
+.error-message {
+  color: #ff0000;
+  /* Red color for errors */
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+input.error,
+textarea.error {
+  border-color: #ff0000;
+  /* Red border for input fields with errors */
+}
