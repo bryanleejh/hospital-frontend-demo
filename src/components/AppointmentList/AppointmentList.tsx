@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import "./AppointmentList.css"; // Adjust the path if necessary
 import { useAppointments } from "../../context/AppointmentContext";
 import mockAppointments from "./MockAppointments";
+import "./AppointmentList.css";
 
 const AppointmentList: React.FC = () => {
   const { appointments, deleteAppointment, setAppointments } =

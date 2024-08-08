@@ -22,7 +22,7 @@ const AppointmentBarChart: React.FC<AppointmentBarChartProps> = ({ data }) => {
   return (
     <BarChart width={600} height={300} data={data}>
       <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
+      <XAxis dataKey="doctor" />
       <YAxis />
       <Tooltip />
       <Legend />

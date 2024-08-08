@@ -23,6 +23,14 @@ const mockAppointments = [
     purpose: "Follow-up Visit",
     contactInfo: "555-8765",
   },
+  {
+    id: 4,
+    patientName: "Jack Lee",
+    doctor: "Dr. Brown",
+    dateTime: "2023-10-03T15:00",
+    purpose: "Follow-up Visit",
+    contactInfo: "555-8769",
+  },
 ];
 
 export default mockAppointments;

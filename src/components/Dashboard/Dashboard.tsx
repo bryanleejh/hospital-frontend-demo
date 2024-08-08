@@ -1,6 +1,7 @@
 import React from "react";
 import AppointmentBarChart, { AppointmentData } from "../../components/AppointmentBarChart/AppointmentBarChart";
 import { useAppointments } from "../../context/AppointmentContext";
+import "./Dashboard.css";
 
 const Dashboard = () => {
   const { appointments } = useAppointments();
@@ -21,7 +22,7 @@ const Dashboard = () => {
   );
 
   return (
-    <div>
+    <div className="dashboard-container">
       <h1>Appointment Dashboard</h1>
       <AppointmentBarChart data={data} />
     </div>
