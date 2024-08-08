@@ -2,6 +2,13 @@
 
 Small frontend demo for hospitals
 
+To view the project live, click [here](https://hospital-frontend-demo.netlify.app/)
+
+To login,
+
+username: user
+password: p@ss
+
 ## Features
 
 - Appointment Management
@@ -50,6 +57,7 @@ Instructions on how to contribute to the project.
 - Accessibility related features
 - API integration
 - Form validation
+- Improve security
 
 ## Authors
 
