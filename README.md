@@ -1,46 +1,72 @@
-# Getting Started with Create React App
+# HOSPITAL FRONTEND DEMO
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Small frontend demo for hospitals
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Appointment Management
+  - Add, edit, and delete appointments.
+  - View appointments in a list
+- Data Visualization
+  - Chart displaying sum of appointments by doctor.
+  - Responsive charts for different device screens.
+- Navigation
+  - Back buttons for easy navigation.
+  - Dynamic routing with React Router.
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Dependencies
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- ex. Node.js, React, Recharts, React Router
 
-### `npm test`
+### Installing
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+git clone https://yourproject.git
+cd your-project-directory
+npm install
+```
 
-### `npm run build`
+### Executing program
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Contributing
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Instructions on how to contribute to the project.
 
-### `npm run eject`
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a pull request
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Future features
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- More advanced visualisations
+- Accessibility related features
+- API Integration
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Authors
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Contributors names and contact info
 
-## Learn More
+- [Bryan](https://github.com/bryanleejh)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Version History
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* 0.1
+    * Initial Release
+
+## License
+
+No license
+
+## Acknowledgments
+
+Inspiration, code snippets, etc.
+* [Recharts](http://recharts.org/en-US/)
+* [React Router](https://reactrouter.com/)
