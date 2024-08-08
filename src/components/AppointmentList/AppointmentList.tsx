@@ -55,7 +55,7 @@ const AppointmentList: React.FC = () => {
         {appointments.map((appointment) => (
           <li key={appointment.id} className="appointment-item">
             <div className="appointment-content">
-              {`${appointment.patientName} with Dr. ${appointment.doctor} on ${appointment.dateTime}`}
+              {`${appointment.patientName} with ${appointment.doctor} on ${appointment.dateTime}`}
             </div>
             <div className="button-container">
               <button
