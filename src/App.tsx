@@ -42,7 +42,10 @@ const App: React.FC = () => {
               )
             }
           />
-          <Route path="/chart" element={<Dashboard />} />
+          <Route
+            path="/chart"
+            element={auth.isAuthenticated ? <Dashboard /> : <Navigate to="/" />}
+          />
         </Routes>
       </MainLayout>
     </Router>
