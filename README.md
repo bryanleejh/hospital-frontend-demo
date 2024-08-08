@@ -30,7 +30,7 @@ password: p@ss
 ### Installing
 
 ```bash
-git clone https://yourproject.git
+git clone git@github.com:bryanleejh/hospital-frontend-demo.git
 cd your-project-directory
 npm install
 ```
